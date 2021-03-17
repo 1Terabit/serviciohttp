@@ -2,6 +2,9 @@ package fibonacci_test
 
 import (
 	"testing"
+
+	"github.com/anthwam/serviciohttp/lib/fibonacci"
+
 )
 
 func TestFib(t *testing.T) {
@@ -20,12 +23,12 @@ func TestFib(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		r := recursion.Fib(c.in)
+		r := fibonacci.Fib(c.in)
 		if r != c.want {
 			t.Errorf("Fib(%v) == %v; want %v", c.in, r, c.want)
 		}
 
-		r = recursion.FibRec(c.in)
+		r = fibonacci.FibRec(c.in)
 		if r != c.want {
 			t.Errorf("FibRec(%v) == %v; want %v", c.in, r, c.want)
 		}
@@ -34,12 +37,12 @@ func TestFib(t *testing.T) {
 
 func BenchmarkFib(b *testing.B) {
 	for i := 0; i <= b.N; i++ {
-		recursion.Fib(40)
+		fibonacci.Fib(40)
 	}
 }
 
 func BenchmarkFibRec(b *testing.B) {
 	for i := 0; i <= b.N; i++ {
-		recursion.FibRec(40)
+		fibonacci.FibRec(40)
 	}
 }
